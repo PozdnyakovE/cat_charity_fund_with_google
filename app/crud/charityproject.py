@@ -35,8 +35,8 @@ class CRUDCharityProject(CRUDBase):
                      ).label('days_before_closed'),
                     CharityProject.description
                 ]
-                ).where(CharityProject.fully_invested
-                        ).order_by('days_before_closed')
+                ).where(CharityProject.fully_invested).order_by(
+                    'days_before_closed')
         )
         return charity_projects
 
