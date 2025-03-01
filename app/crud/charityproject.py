@@ -34,8 +34,7 @@ class CRUDCharityProject(CRUDBase):
                      func.julianday(CharityProject.create_date)
                      ).label('days_before_closed'),
                     CharityProject.description
-                ]
-                ).where(CharityProject.fully_invested).order_by(
+                ]).where(CharityProject.fully_invested).order_by(
                     'days_before_closed')
         )
         return charity_projects
