@@ -3,6 +3,7 @@ import sys
 from pydantic import BaseSettings, EmailStr
 from typing import Optional
 
+DATE_FORMAT = '%Y/%m/%d %H:%M:%S'
 MIN_PASSWORD_LENGTH = 3
 
 logger = logging.getLogger(__name__)
@@ -39,3 +40,23 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+SPREADSHEET_BODY = {
+    'properties': {'title': 'Имя отчета',
+                   'locale': 'ru_RU'},
+    'sheets': [{'properties': {'sheetType': 'GRID',
+                               'sheetId': 0,
+                               'title': 'Лист1',
+                               'gridProperties': {'rowCount': 100,
+                                                  'columnCount': 11}}}]
+}
+
+PERMISSION_BODY = {'type': 'user',
+                   'role': 'writer',
+                   'emailAddress': settings.email}
+
+TABLE_VALUES = (
+    ['Отчёт от',],
+    ['Топ проектов по скорости закрытия'],
+    ['Название проекта', 'Время сбора', 'Описание']
+)
